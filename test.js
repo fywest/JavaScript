@@ -12,4 +12,4 @@ var b = 2;
 a = 7;
 b = a;
 console.log(a);
-alert("no hello")
+//alert("no hello")
