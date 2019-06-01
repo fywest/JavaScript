@@ -508,3 +508,265 @@ data1 = lookUpProfile("Sherlock1","number");
 console.log(data1);
 data1 = lookUpProfile("Sherlock","number1");
 console.log(data1);
+
+// 2:28 min
+var randomNumberBetween0and19 = Math.floor(Math.random()*20);
+
+var num=10;
+function randomWholeNum(num){
+    //return Math.random();
+    return Math.floor(Math.random()*num);
+}
+console.log(randomWholeNum(num));
+
+function convertToInteger(str,base){
+    return parseInt(str,base);
+}
+console.log(convertToInteger("10101",10));
+
+function checkEqual(a,b){
+    return a===b;//return a === b ? true : false
+}
+console.log(checkEqual(2,1));
+
+function checkSign(num){
+    return num > 0 ? "positive" : num < 0 ? "negtive" : "zero ";
+}
+console.log(checkSign(0));
+
+function checkScope(){
+    "use strict";
+    let i = "function scope i";
+    var j = "function scope j";
+    if(true){
+        let i = "block scope i";
+        var j = "block scope j";
+        console.log("Block scope i is : ",i)
+        console.log("Block scope j is : ",j)
+    }
+    console.log("function scope i is : ",i)
+    console.log("function scope j is : ",j)
+    return i;
+}
+checkScope();
+
+function printManyTimes(str){
+    "use strict";
+    var sentence = str + " is cool!";
+    const SENTENCE = str + " is constant!";
+    sentence = str + " is amazing!";
+    for( var i=0 ; i< str.length; i+=2){
+        console.log(sentence);
+    }
+}
+printManyTimes("freeCodeCamp")
+
+const s = [5, 7, 2];
+function editInPlace(){
+    //s = [2, 5, 7]; error
+    s[0] = 2;
+    s[1] = 5;
+    s[2] = 7;
+}
+editInPlace()
+console.log(s)
+
+function freezeObj(){
+    const MATH_CONSTANTS = {
+        PI: 3.14
+    };
+    Object.freeze(MATH_CONSTANTS);
+    try{
+        MATH_CONSTANTS.PI = 99;
+    } catch(ex){
+        console.log(ex);
+    }
+    return MATH_CONSTANTS.PI;
+}
+const PI = freezeObj();
+console.log(PI);
+
+var myConcat = function(arr1, arr2){
+    return arr1.concat(arr2);
+}
+console.log(myConcat([1,2],[3,4,5]));
+
+var myConcat1 = (arr1, arr2)=> arr1.concat(arr2);
+console.log(myConcat1([1,2],[3,4,5]));
+
+const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+const squareList = (arr) => {
+    const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);
+    return squaredIntegers;
+};
+const squaredIntegers = squareList(realNumberArray);
+console.log(squaredIntegers);
+
+const increment = (function() {
+    return function increment(number, value = 1){
+        return number + value;
+    }
+})();
+console.log(increment(5, 2));
+console.log(increment(5));
+
+const sum1 = (function(){
+    return function sum1(x, y, z){
+        const args = [x, y, z];
+        return args.reduce((a,b) => a+b, 0);
+    };
+})();
+console.log(sum1(1, 2, 3));
+
+const sum2 = (function(){
+    return function sum2(...args){
+        return args.reduce((a,b) => a+b, 0);
+    };
+})();
+console.log(sum2(1, 2, 3,4));
+
+const arr1 = ["Jan", "FEB", "MAR", "APR", "MAY"];
+let arr2;
+let arr3;
+(function(){
+    arr2 = arr1;
+    arr3 = [...arr1]
+    arr1[0] = "potato"
+})();
+console.log(arr2)
+console.log(arr3)
+
+const LOCAL_FORECASE = {
+    today: { min: 72 , max: 83 },
+    tomorrow:{ min: 73.3, max: 84.6 }
+};
+function getMaxOfTmrw(forecast) {
+    const { tomorrow: { max :maxOfTomorrow}} = forecast;
+    return maxOfTomorrow;
+}
+console.log(getMaxOfTmrw(LOCAL_FORECASE));
+
+const [z, x, , y] = [1, 2, 3, 4, 5, 6];
+console.log(z,x,y)
+let a1 = 8, b1 = 6;
+(() => {[a1, b1] = [b1, a1]})();
+console.log(a1);
+console.log(b1);
+
+const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function removeFirstTwo(list){
+    const [ , , ...arr] = list;
+    return arr;
+}
+const arr = removeFirstTwo(source);
+console.log(arr);
+console.log(source)
+
+const stats = {
+    max: 56.78,
+    stand_deviation: 4.34,
+    median: 34.54,
+    mode: 23.87,
+    min: -0.75,
+    average: 35.85
+};
+const half = (function(){
+    return function half({max, min}){
+        return (max + min)/2.0;
+    };
+})();
+console.log(stats);
+console.log(half(stats));
+
+const person1 = {
+    name: "Zodiac Hasbro",
+    age: 56
+};
+const greeting = `Hello, my name is ${person1.name}!
+I am ${person1.age} years old.`;
+console.log(greeting);
+
+const result = {
+    success: ["max-length", "no-amd","prefer-arrow-functions"],
+    failure: ["no-var","var-on-top","linebreak"],
+    skipped: ["id-blacklist", "no-dup-keys"]
+};
+function makeList(arr){
+    const resultDisplayArray = [];
+    for(let i = 0; i < arr.length; i++){
+        resultDisplayArray.push(`<li class="text-warning>${arr[i]}</li>"`)
+    }
+    return resultDisplayArray;
+}
+const resultDisplayArray = makeList(result.failure);
+console.log(resultDisplayArray)
+
+const createPerson = (name, age, gender) => {
+    return {
+        name: name,
+        age: age,
+        gender: gender
+    };
+};
+console.log(createPerson("Zodiac Hasbro", 56, "male"));
+
+const createPerson1 = (name, age, gender) => ({name, age, gender});
+console.log(createPerson1("Lauri", 49, "male"));
+
+const bicycle = {
+    gear: 2,
+    setGear: function(newGear){
+        this.gear = newGear;
+    }
+};
+bicycle.setGear(3);
+console.log(bicycle.gear);
+
+var SpaceShuttle = function(targetPlanet){
+    this.targetPlanet = targetPlanet;
+}
+var zeus = new SpaceShuttle('Jupiter');
+console.log(zeus.targetPlanet)
+
+class SpaceShuttle1 {
+    constructor(targetPlanet){
+        this.targetPlanet = targetPlanet;
+    }
+} 
+
+var zeus1 = new SpaceShuttle1('Jupiter1');
+console.log(zeus1.targetPlanet)
+
+function makeClass(){
+    class Thermostat{
+        constructor(temp){
+            this._temp = 5/9*(temp - 32);
+        }
+        get temperature(){
+            return this._temp;
+        }
+        set temperature(updatedTemp){
+            this._temp = updatedTemp;
+        }
+    }
+    return Thermostat
+}
+const Thermostat = makeClass();
+const thermos = new Thermostat(76);
+let temp = thermos.temperature;
+thermos.temperature = 26;
+temp = thermos.temperature;
+console.log(temp);
+
+/***
+import { capitalizeString } from "./string_function"
+const cap = capitalizeString("hello");
+console.log(cap) 
+ */
+
+ //import * as capitalizeStrings from "capitalize_strings";
+
+ // export default function subract8(x,y) {return x-y;}
+
+ //import substract from "math_functions"
+ // subtract(7,4);
