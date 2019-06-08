@@ -1,5 +1,52 @@
 
-console.log(libraryName);
+var person = new Object();
+
+person["firstname"]= "Tony";
+person["lastname"] = "Alicea";
+
+var firstnameProperty = "firstname";
+
+console.log(person);
+console.log(person[firstnameProperty]);
+
+console.log(person.firstname);
+console.log(person.lastname);
+
+person.address = new Object();
+person.address.street = "111 Main St. ";
+person.address.city = "New York";
+person.address.state = "NY";
+
+console.log(person.address.street);
+console.log(person.address.city);
+console.log(person["address"]["state"]);
+
+var Tony1 = { firstname: 'Tony1',
+                lastname: 'Alicea1',
+                address:{
+                    street: "Main ST. ",
+                    city:"New York",
+                    state: "NY"
+                }
+            };
+console.log(person);
+
+function greet(person){
+    console.log('Hi'+person.firstname);
+}
+greet(Tony1);
+
+greet({firstname:'Mary',
+        lastname:'Doe'
+    }
+    );
+
+Tony1.address2 = {
+    street: '333 Second St.'
+}
+console.log(Tony1);
+
+//console.log(libraryName);
 /* 
 function greet(name){
     name = name || '<your name here>';
